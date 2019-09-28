@@ -7,6 +7,10 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'tv_shows#index'
-  resources :tv_shows
-  resources :episodes
+  namespace :api, as: nil, defaults: { format: 'json' } do
+    namespace :v1, as: nil do
+      resources :tv_shows
+      resources :episodes
+    end
+  end
 end
